@@ -31,11 +31,14 @@ class BasicCollectionViewController: UICollectionViewController {
     }
     
     private func generateLayout() -> UICollectionViewLayout {
+        
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let spacing: CGFloat = 10
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -46,6 +49,13 @@ class BasicCollectionViewController: UICollectionViewController {
             layoutSize: groupSize,
             repeatingSubitem: item,
             count: 1
+        )
+        
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: spacing,
+            leading: spacing,
+            bottom: 0,
+            trailing: spacing
         )
         
         let section = NSCollectionLayoutSection(group: group)
